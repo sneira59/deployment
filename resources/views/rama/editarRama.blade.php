@@ -255,13 +255,10 @@
                                 </li>
                             </ul>
                         </li>
-                       
                     </ul>
                 </div>
             </div>
             <!-- Side Nav END -->
-
-
             <!-- Page Container START -->
             <div class="page-container">
                 
@@ -269,128 +266,41 @@
                 <!-- Content Wrapper START -->
                 <div class="main-content">
                     <div class="page-header">
-                        <h2 class="header-title">Despliegues</h2>
+                        <h2 class="header-title">Ramas</h2>
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
                                 <span class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Inicio</span>
-                                <a class="breadcrumb-item" href="{{url('despliegues')}}">Despliegues</a>
-                                <span class="breadcrumb-item active">Nuevo Despliegue</span>
+                                <a class="breadcrumb-item" href="{{url('ramas')}}">Ramas</a>
+                                <span class="breadcrumb-item active">Editar Rama</span>
                             </nav>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h2>Registrar nuevo despliegue</h2>
+                            <h2>Editar Ramas</h2>
                             <br>
                             
                             
-                            <form action="{{route('despliegues.store')}}" method="POST">
+                            <form action="{{url('ramas/'.$rama->idRama)}}" method="POST">
                                 @csrf
+                                @method('PUT')
+
                                 <div class="form-row">
                                     
                                     <!-- Input A -->
+                                    
+
                                     <div class="form-group col-md-6">
-
-                                        <label><sup class="obligatorio">*</sup>Ambiente</label>
-                                        <select id="inputState" class="form-control" name="a">
-                                            <option selected>Elige</option>
-                                            @foreach ($Desp as $desp)
-                                                <option value="{{$desp->idAmbiente}}">{{$desp->nomb_amb}}</option>
-                                                @endforeach
-                                                
-                                        </select>
-                                        <strong class="text-danger"></strong>
-
+                                        <label for="r"><sup class="obligatorio">*</sup>Ramas</label>
+                                        <input type="text" class="form-control" name="r" id="r"
+                                               placeholder="Devops" value="{{$rama->nomb_rama}}">
+                                        <strong class="text-danger">{{$errors->first('r')}}</strong>
                                     </div>
 
 
                                     <!-- Input D -->
-                                    <div class="form-group col-md-6">
-
-                                        <label><sup class="obligatorio">*</sup>Desarrollador</label>
-                                        <select id="inputState" class="form-control" name="d">
-                                            <option selected>Elige</option>
-                                            @foreach ($Desa as $desa)
-                                                <option value="{{$desa->idDesarollador}}">{{$desa->nomb_desa}}</option>
-                                                @endforeach
-                                        </select>
-                                        <strong class="text-danger"></strong>
-                                    </div>
 
 
-
-    
-                                    <div class="form-group col-md-6">
-
-                                        <label><sup class="obligatorio">*</sup>Devops</label>
-                                        <select id="inputState" class="form-control" name="dv">
-                                            <option selected>Elige</option>
-                                            @foreach ($Devo as $devo)
-                                                <option value="{{$devo->idDevops}}">{{$devo->nomb_devo}}</option>
-                                                @endforeach
-                                        </select>
-                                        <strong class="text-danger"></strong>
-
-                                    </div>
-
-
-    
-                                    <div class="form-group col-md-6">
-                                        <label><sup class="obligatorio">*</sup>Layer</label>
-                                        <select id="inputState" class="form-control" name="l">
-                                            <option selected>Elige</option>
-                                            @foreach ($Lay as $lay)
-
-                                                <option value="{{$lay->idLayer}}">{{$lay->layer}}</option>
-                                                @endforeach
-
-                                        </select>
-                                        <strong class="text-danger"></strong>
-
-                                    </div>
-
-
-                                    <div class="form-group col-md-6">
-                                        <label><sup class="obligatorio">*</sup>Proyecto</label>
-                                        <select id="inputState" class="form-control" name="p">
-                                            <option selected>Elige</option>
-                                            @foreach ($Pro as $pro)
-
-                                                <option value="{{$pro->idProyecto}}">{{$pro->nomb_proy}}</option>
-                                                @endforeach
-
-                                        </select>
-                                        <strong class="text-danger"></strong>
-                                    </div>
-
-
-
-                                    <div class="form-group col-md-6">
-                                        <label><sup class="obligatorio">*</sup>Rama</label>
-                                        <select id="inputState" class="form-control" name="r">
-                                            <option selected>Elige</option>
-                                            @foreach ($Rama as $rama)
-                                            <option value="{{$rama->idRama}}">{{$rama->nomb_rama}}</option>
-                                            @endforeach
-                                        </select>
-                                        
-                                        <strong class="text-danger"></strong>
-                                    </div>
-
-
-
-                                    <div class="form-group col-md-6">
-                                        <label><sup class="obligatorio">*</sup>Servidor</label>
-                                        <select id="inputState" class="form-control" name="s">
-                                            <option selected>Elige</option>
-                                            @foreach ($Serv as $serv)
-
-                                                <option value="{{$serv->idServidor}}">{{$serv->numb_serv}}</option>
-                                                @endforeach
-
-                                        </select>
-                                        <strong class="text-danger"></strong>
-                                    </div>
 
                                 </div>
                                 
@@ -399,8 +309,10 @@
                                 <br>
 
                                 
-                                <input type="submit" style="margin-left: 500px; width: 220px;" class="btn btn-enviar" value="Registrar">
-                               
+                                <input type="submit" style="margin-left: 500px; width: 220px;" class="btn btn-enviar" value="Modificar">
+                                <br>
+                                <br>
+                                <br>                               
                             </form>
                         </div>
                     </div>

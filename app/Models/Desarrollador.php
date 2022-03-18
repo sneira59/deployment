@@ -13,4 +13,8 @@ class Desarrollador extends Model
     
     protected $guarded = [];
 
+    public function despliegue(){
+        return $this->belongsTo('App\Models\Despliegue' , 'idDesp','id');
+
+}
 }

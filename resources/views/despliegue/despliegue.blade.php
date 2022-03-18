@@ -23,15 +23,15 @@
             <!-- Header START -->
             <div class="header">
                 <div class="logo logo-dark">
-                    <a href="index.html">
-                        <img src="assets/images/logo/logo-medio.svg" alt="Logo ProjectUp">
-                        <img class="logo-fold" src="assets/images/logo/icono.svg" alt="Icono ProjectUp">
+                    <a href="{{url('home')}}">
+                        <img src="{{asset('assets/images/logo/mchelo.png')}}" style="width: 125px">
+                        <img class="logo-fold" src="{{asset('assets/images/logo/mchelox.png')}}" style="width: 48px" alt="Icono M">
                     </a>
                 </div>
                 <div class="logo logo-white">
-                    <a href="index.html">
-                        <img src="assets/images/logo/logo-medio-blanco.svg" alt="Logo ProjectUp">
-                        <img class="logo-fold" src="assets/images/logo/icono.svg" alt="Icono ProjectUp">
+                    <a href="{{url('home')}}">
+                        <img src="{{asset('assets/images/logo/mchelox.png')}}" alt="Logo ProjectUp">
+                        <img class="logo-fold" src="{{asset('assets/images/logo/montechelo.png')}}" alt="Icono ProjectUp">
                     </a>
                 </div>
                 <div class="nav-wrap">
@@ -190,309 +190,72 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-dashboard"></i>
-                                </span>
-                                <span class="title">Dashboard</span>
+                                    <i class="anticon anticon-home"></i> </span>
+                                <span class="title">Inicio</span>
                                 <span class="arrow">
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="index.html">Default</a>
+                                    <a href="{{route('home.index')}}">Home</a>
                                 </li>
-                                <li>
-                                    <a href="index-crm.html">CRM</a>
-                                </li>
-                                <li>
-                                    <a href="index-e-commerce.html">E-commerce</a>
-                                </li>
-                                <li>
-                                    <a href="index-projects.html">Projects</a>
-                                </li>
+                               
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-appstore"></i>
-                                </span>
-                                <span class="title">Apps</span>
-                                <span class="arrow">
-                                    <i class="arrow-icon"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="app-chat.html">Chat</a>
-                                </li>
-                                <li>
-                                    <a href="app-file-manager.html">File Manager</a>
-                                </li>
-                                <li>
-                                    <a href="app-mail.html">Mail</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="javascript:void(0);">
-                                        <span>Projects</span>
-                                        <span class="arrow">
-                                            <i class="arrow-icon"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="app-project-list.html">Project List</a>
-                                        </li>
-                                        <li>
-                                            <a href="app-project-details.html">Project Details</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="javascript:void(0);">
-                                        <span>E-commerce</span>
-                                        <span class="arrow">
-                                            <i class="arrow-icon"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="app-e-commerce-order-list.html">Orders List</a>
-                                        </li>
-                                        <li>
-                                            <a href="app-e-commerce-products.html">Products</a>
-                                        </li>
-                                        <li>
-                                            <a href="app-e-commerce-products-list.html">Products List</a>
-                                        </li>
-                                        <li>
-                                            <a href="app-e-commerce-products-edit.html">Products Edit</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-									<i class="anticon anticon-build"></i>
-								</span>
-                                <span class="title">UI Elements</span>
-                                <span class="arrow">
-									<i class="arrow-icon"></i>
-								</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="avatar.html">Avatar</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alert</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badge</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="cards.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html">Icons</a>
-                                </li>
-                                <li>
-                                    <a href="lists.html">Lists</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-hdd"></i>
-                                </span>
-                                <span class="title">Components</span>
-                                <span class="arrow">
-                                    <i class="arrow-icon"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="accordion.html">Accordion</a>
-                                </li>
-                                <li>
-                                    <a href="carousel.html">Carousel</a>
-                                </li>
-                                <li>
-                                    <a href="dropdown.html">Dropdown</a>
-                                </li>
-                                <li>
-                                    <a href="modals.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="toasts.html">Toasts</a>
-                                </li>
-                                <li>
-                                    <a href="popover.html">Popover</a>
-                                </li>
-                                <li>
-                                    <a href="slider-progress.html">Slider & Progress</a>
-                                </li>
-                                <li>
-                                    <a href="tabs.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="tooltips.html">Tooltips</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-form"></i>
-                                </span>
-                                <span class="title">Forms</span>
-                                <span class="arrow">
-                                    <i class="arrow-icon"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="form-elements.html">Form Elements</a>
-                                </li>
-                                <li>
-                                    <a href="form-layouts.html">Form Layouts</a>
-                                </li>
-                                <li>
-                                    <a href="form-validation.html">Form Validation</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown open">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-table"></i>
                                 </span>
-                                <span class="title">Tables</span>
+                                <span class="title">Tablas</span>
                                 <span class="arrow">
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="basic-table.html">Basic Table</a>
+                                    <a href="{{route('despliegues.index')}}">Despliegues</a>
                                 </li>
-                                <li class="active">
-                                    <a href="data-table.html">Data Table</a>
+                                <li>
+                                    <a href="{{route('ambientes.index')}}">Ambientes</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('desarrolladores.index')}}">Desarrollador</a>
+                                </li>
+                                <li>
+                                    <a href={{route('devops.index')}}>Devops</a>
+                                </li>
+                                <li>
+                                    <a href={{route('ramas.index')}}>Ramas</a>
+                                </li>
+                                <li>
+                                    <a href={{route('servidores.index')}}>Servidores</a>
+                                </li>
+                                <li>
+                                    <a href={{route('proyectos.index')}}>Proyectos</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-pie-chart"></i>
-                                </span>
-                                <span class="title">Charts</span>
+                                    <i class="anticon anticon-file"></i> </span>
+                                <span class="title">Reportes</span>
                                 <span class="arrow">
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="chartist.html">Chartist</a>
+                                    <a href="{{route('pdf.informe')}}">Generar PDF</a>
                                 </li>
                                 <li>
-                                    <a href="chartjs.html">ChartJs</a>
+                                    <a href="{{route('excel.informe')}}">Generar Excel</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-file"></i>
-                                </span>
-                                <span class="title">Pages</span>
-                                <span class="arrow">
-                                    <i class="arrow-icon"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="profile.html">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="invoice.html">Invoice</a>
-                                </li>
-                                <li>
-                                    <a href="members.html">Members</a>
-                                </li>
-                                <li>
-                                    <a href="pricing.html">Pricing</a>
-                                </li>
-                                <li>
-                                    <a href="setting.html">Setting</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="javascript:void(0);">
-                                        <span>Blog</span>
-                                        <span class="arrow">
-                                            <i class="arrow-icon"></i>
-                                        </span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="blog-grid.html">Blog Grid</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-list.html">Blog List</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-post.html">Blog Post</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle" href="javascript:void(0);">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-lock"></i>
-                                </span>
-                                <span class="title">Authentication</span>
-                                <span class="arrow">
-                                    <i class="arrow-icon"></i>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="login-1.html">Login 1</a>
-                                </li>
-                                <li>
-                                    <a href="login-2.html">Login 2</a>
-                                </li>
-                                <li>
-                                    <a href="login-3.html">Login 3</a>
-                                </li>
-                                <li>
-                                    <a href="sign-up-1.html">Sign Up 1</a>
-                                </li>
-                                <li>
-                                    <a href="sign-up-2.html">Sign Up 2</a>
-                                </li>
-                                <li>
-                                    <a href="sign-up-3.html">Sign Up 3</a>
-                                </li>
-                                <li>
-                                    <a href="error-1.html">Error 1</a>
-                                </li>
-                                <li>
-                                    <a href="error-2.html">Error 2</a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -505,19 +268,38 @@
                 <!-- Content Wrapper START -->
                 <div class="main-content">
                     <div class="page-header">
-                        <h2 class="header-title">Data Table</h2>
+                        <h2 class="header-title">Despliegues</h2>
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
-                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
-                                <a class="breadcrumb-item" href="#">Tables</a>
-                                <span class="breadcrumb-item active">Data Table</span>
+                                <a href="{{url('home')}}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Inicio</a>
+                                <span class="breadcrumb-item active">Despliegues</span>
                             </nav>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
+                            @if (session("mensaje"))
+                            <div class="notification-toast top-right" id="notification-toast" data-delay="3000">
+                                <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="alert alert-success m-b-0">
+                                        <button type="button" class="ml-2 close" data-dismiss="toast"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <div class="d-flex justify-content-start">
+                                        <span class="alert-icon m-r-20 font-size-30">
+                                            <i class="anticon anticon-check-circle text-success"></i>
+                                        </span>
+                                            <div class="m-t-10">
+                                                <p>{{ session("mensaje") }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                @endif
                             <h4>Despliegues</h4>
-                            <button class="btn btn-primary">Nuevo Despliegue</button>
+                            <a href="{{url('despliegues/create')}}"><button class="btn btn-primary">Nuevo Despliegue</button></a>
                             <div class="m-t-25">
                              
 
@@ -532,51 +314,56 @@
                                             <th>Layer</th>
                                             <th>Proyecto</th>
                                             <th>Rama</th>
-                                            <th>Servidor</th>
+                                            <th>Servidor </th>
+                                            <th>ED</th>
+
+
+                                           
+
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($Desa as $desa)
-                                        @foreach ($Desp as $desp)
-                                        @foreach ($Devo as $devo)
-                                        @foreach ($Lay as $lay)
-                                        @foreach ($Pro as $pro)
-                                        @foreach ($Rama as $rama)
-                                        @foreach ($Serv as $serv)
+                                        
+                                       
+                                       
                                         
                                     
                                        
 
 
+                                        @foreach ($Desa as $desa)
 
                                         <tr>
+
                                             <td>{{$desa->fecha}}</td>
                                             
 
-                                            <td>{{$desp->nomb_amb}}</td>
+                                            <td>{{$desa->nomb_amb}}</td>
 
                                             <td>{{$desa->nomb_desa}}</td>
 
-                                            <td>{{$devo->nomb_devo}}</td>
+                                            <td>{{$desa->nomb_devo}}</td>
 
-                                            <td>{{$lay->layer}}</td>
+                                            <td>{{$desa->layer}}</td>
 
-                                            <td>{{$pro->nomb_proy}}</td>
+                                            <td>{{$desa->nomb_proy}}</td>
                                             
-                                            <td>{{$rama->nomb_rama}}</td>
+                                            <td>{{$desa->nomb_rama}}</td>
 
-                                            <td>{{$serv->numb_serv}}</td>
+                                            <td>{{$desa->numb_serv}}</td>
+                                            
+                                            <td><a class="btn btn-xs btn-danger" href="{{url('despliegues/'.$desa->IdDesp.'/edit')}}"
+                                                title="Modificar"><i class="anticon anticon-edit"></i></a><form action="{{route('despliegues.delete', $desa->IdDesp)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                <button type="submit" style="background-color:transparent; border-color:transparent"><a class="btn btn-xs btn-danger" style="color:white;display:inline-block"
+                                                    title="Eliminar"><i class="anticon anticon-delete"></i></button></td>
+                                                </form>
 
                                      
 
                                         </tr>
-                                        @endforeach
-                                        @endforeach
-                                        @endforeach
-                                        @endforeach
-                                        @endforeach
-                                        @endforeach
                                         @endforeach
 
                                         
@@ -593,6 +380,8 @@
                                             <th>Proyecto</th>
                                             <th>Rama</th>
                                             <th>Servidor</th>
+                                            <th>ED</th>
+
 
                                         </tr>
                                     </tfoot>
@@ -604,22 +393,7 @@
                             </div>
                             <div class="">
                                 <pre><code class=""><script type="text/plain"><table id="data-table" class="table">
-    <thead>
-        <tr>
-            <th>...</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>...</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>...</th>
-        </tr>
-    </tfoot>
-</table></script></code></pre>
+  </script></code></pre>
                             </div>
                             <div class="code-example">
                                 <pre><code class=""><script type="text/plain">$('#data-table').DataTable();</script></code></pre>
