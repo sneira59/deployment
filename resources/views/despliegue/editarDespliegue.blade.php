@@ -255,12 +255,10 @@
                                 </li>
                             </ul>
                         </li>
-                       
                     </ul>
                 </div>
             </div>
             <!-- Side Nav END -->
-
 
             <!-- Page Container START -->
             <div class="page-container">
@@ -274,25 +272,27 @@
                             <nav class="breadcrumb breadcrumb-dash">
                                 <span class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Inicio</span>
                                 <a class="breadcrumb-item" href="{{url('despliegues')}}">Despliegues</a>
-                                <span class="breadcrumb-item active">Nuevo Despliegue</span>
+                                <span class="breadcrumb-item active">Editar Despliegue</span>
                             </nav>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h2>Registrar nuevo despliegue</h2>
+                            <h2>Editar despliegue</h2>
                             <br>
                             
                             
-                            <form action="{{route('despliegues.store')}}" method="POST">
+                            <form action="{{url('despliegues/'.$despliegues->IdDesp)}}" method="POST">
                                 @csrf
+                                @method('PUT')
+
                                 <div class="form-row">
                                     
                                     <!-- Input A -->
                                     <div class="form-group col-md-6">
 
                                         <label><sup class="obligatorio">*</sup>Ambiente</label>
-                                        <select id="inputState" class="form-control" name="a">
+                                        <select id="inputState" class="form-control" name="a" required>
                                             <option selected>Elige</option>
                                             @foreach ($Desp as $desp)
                                                 <option value="{{$desp->idAmbiente}}">{{$desp->nomb_amb}}</option>

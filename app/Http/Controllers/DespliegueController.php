@@ -16,62 +16,40 @@ use App\Models\Servidor;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DespStoreRequest;
+use App\Http\Requests\DespEditarRequest;
+
 
 class DespliegueController extends Controller
 {
    public function index()
-   {
-       $Desa = Despliegue::all();
+   {           
 
-       $Desp = DB::table('Ambiente')
-       ->join('Despliegue','Despliegue.FK_AMB','=','Ambiente.idAmbiente')
-       ->select('Ambiente.nomb_amb','Despliegue.*')
+       $Desa = DB::table('Despliegue')
+       ->select(
+          'Ambiente.nomb_amb',
+          'Desarollador.nomb_desa',
+          'Devops.nomb_devo',
+          'Layer.layer',
+          'Proyecto.nomb_proy',
+          'Rama.nomb_rama',
+          'Servidor.numb_serv',
+          'Despliegue.fecha',
+          'Despliegue.IdDesp'
+       )
+       ->join('Ambiente','Despliegue.FK_AMB','=','Ambiente.idAmbiente')
+       ->join('Desarollador','Despliegue.FK_DESA','=','Desarollador.idDesarollador')
+       ->join('Devops','Despliegue.FK_DEVO','=','Devops.idDevops')
+       ->join('Layer','Despliegue.FK_LAYE','=','Layer.idLayer')
+       ->join('Proyecto','Despliegue.FK_PRO','=','Proyecto.idProyecto')
+       ->join('Rama','Despliegue.FK_RAMA','=','Rama.idRama')
+       ->join('Servidor','Despliegue.FK_SERV','=','Servidor.idServidor')
+       ->distinct()
        ->get();
+
+
+       return view("despliegue.despliegue")
+       ->with('Desa',$Desa);
        
-       $Desa = DB::table('Desarollador')
-       ->join('Despliegue','Despliegue.FK_AMB','=','Desarollador.idDesarollador')
-       ->select('Desarollador.nomb_desa','Despliegue.*')
-       ->get();
-
-       $Devo = DB::table('Devops')
-       ->join('Despliegue','Despliegue.FK_DEVO','=','Devops.idDevops')
-       ->select('Devops.nomb_devo','Despliegue.*')
-       ->get();
-
-       $Lay = DB::table('Layer')
-       ->join('Despliegue','Despliegue.FK_LAYE','=','Layer.idLayer')
-       ->select('Layer.layer','Despliegue.*')
-       ->get();
-
-       $Pro = DB::table('Proyecto')
-       ->join('Despliegue','Despliegue.FK_PRO','=','Proyecto.idProyecto')
-       ->select('Proyecto.nomb_proy','Despliegue.*')
-       ->get();
-
-       $Rama = DB::table('Rama')
-       ->join('Despliegue','Despliegue.FK_RAMA','=','Rama.idRama')
-       ->select('Rama.nomb_rama','Despliegue.*')
-       ->get();
-
-       $Serv = DB::table('Servidor')
-       ->join('Despliegue','Despliegue.FK_SERV','=','Servidor.idServidor')
-       ->select('Servidor.numb_serv','Despliegue.*')
-       ->get();
-
-
-
-
-
-
-
-       return view("despliegue.despliegue")->with('Desp',$Desp)
-       ->with('Desa',$Desa)
-       ->with('Devo',$Devo)
-       ->with('Lay',$Lay)
-       ->with('Pro',$Pro)
-       ->with('Rama',$Rama)
-       ->with('Serv',$Serv);
-
 
    }
 
@@ -119,8 +97,8 @@ class DespliegueController extends Controller
    public function store(DespStoreRequest $request){
        
 
-    $maxId = Despliegue::all()->max('id');
-    $maxId++;
+   
+
 
     $d = new Despliegue();
     $d->FK_AMB = $request->input('a');
@@ -132,13 +110,73 @@ class DespliegueController extends Controller
     $d->FK_SERV = $request->input('s');
     $d->save();
 
-    return redirect('despliegues')->with('message', 'Despliegue registrado');
+    return redirect('despliegues')->with('mensaje', 'Despliegue registrado');
+   }
+   public function edit($id){
+      $Desp = DB::table('Ambiente')
+       ->select('nomb_amb','idAmbiente')
+       ->get();
 
+       $D = DB::table('Despliegue')
+       ->select('IdDesp')
+       ->get();
+       
+       $Desa = DB::table('Desarollador')
+       ->select('nomb_desa','idDesarollador')
+       ->get();
 
+       $Devo = DB::table('Devops')
+       ->select('nomb_devo','idDevops')
+       ->get();
 
+       $Lay = DB::table('Layer')
+       ->select('layer','idLayer')
+       ->get();
 
+       $Pro = DB::table('Proyecto')
+       ->select('nomb_proy','idProyecto')
+       ->get();
+
+       $Rama = DB::table('Rama')
+       ->select('nomb_rama','idRama')
+       ->get();
+
+       $Serv = DB::table('Servidor')
+       ->select('numb_serv','idServidor')
+       ->get();
+       
+      $d = Despliegue::find($id);
+      return view ('despliegue.editarDespliegue')->with('despliegues',$d)
+      ->with('Desp',$Desp)
+      ->with('Desa',$Desa)
+        ->with('Devo',$Devo)
+        ->with('Lay',$Lay)
+        ->with('Pro',$Pro)
+        ->with('Rama',$Rama)
+        ->with('Serv',$Serv);
 
    }
+
+   public function update(DespEditarRequest $request, $id){
+      $despliegues = Despliegue::find($id);
+      $despliegues->FK_AMB = $request->input('a');
+      $despliegues->FK_DESA = $request->input('d');
+      $despliegues->FK_DEVO = $request->input('dv');
+      $despliegues->FK_LAYE = $request->input('l');
+      $despliegues->FK_PRO = $request->input('p');
+      $despliegues->FK_RAMA = $request->input('r');
+      $despliegues->FK_SERV = $request->input('s');
+      $despliegues->save();
+      return redirect('despliegues')->with('mensaje','despliegue actualizado correctamente');
+
+   }
+
+   public function destroy($id){
+      $despliegues = Despliegue::find($id);
+      $despliegues->delete();
+      return redirect('despliegues')->with('mensaje','Despliegue eliminado correctamente');
+  }
+  
 
 
 }

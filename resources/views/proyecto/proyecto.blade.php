@@ -255,13 +255,10 @@
                                 </li>
                             </ul>
                         </li>
-                       
                     </ul>
                 </div>
             </div>
             <!-- Side Nav END -->
-
-
             <!-- Page Container START -->
             <div class="page-container">
                 
@@ -269,142 +266,244 @@
                 <!-- Content Wrapper START -->
                 <div class="main-content">
                     <div class="page-header">
-                        <h2 class="header-title">Despliegues</h2>
+                        <h2 class="header-title">Proyecto</h2>
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
-                                <span class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Inicio</span>
-                                <a class="breadcrumb-item" href="{{url('despliegues')}}">Despliegues</a>
-                                <span class="breadcrumb-item active">Nuevo Despliegue</span>
+                                <a href="{{url('home')}}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Inicio</a>
+                                <span class="breadcrumb-item active">Proyectos</span>
                             </nav>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h2>Registrar nuevo despliegue</h2>
-                            <br>
-                            
-                            
-                            <form action="{{route('despliegues.store')}}" method="POST">
-                                @csrf
-                                <div class="form-row">
-                                    
-                                    <!-- Input A -->
-                                    <div class="form-group col-md-6">
-
-                                        <label><sup class="obligatorio">*</sup>Ambiente</label>
-                                        <select id="inputState" class="form-control" name="a">
-                                            <option selected>Elige</option>
-                                            @foreach ($Desp as $desp)
-                                                <option value="{{$desp->idAmbiente}}">{{$desp->nomb_amb}}</option>
-                                                @endforeach
-                                                
-                                        </select>
-                                        <strong class="text-danger"></strong>
-
+                            @if (session("mensaje"))
+                            <div class="notification-toast top-right" id="notification-toast" data-delay="3000">
+                                <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="alert alert-success m-b-0">
+                                        <button type="button" class="ml-2 close" data-dismiss="toast"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <div class="d-flex justify-content-start">
+                                        <span class="alert-icon m-r-20 font-size-30">
+                                            <i class="anticon anticon-check-circle text-success"></i>
+                                        </span>
+                                            <div class="m-t-10">
+                                                <p>{{ session("mensaje") }}</p>
+                                            </div>
+                                        </div>
                                     </div>
-
-
-                                    <!-- Input D -->
-                                    <div class="form-group col-md-6">
-
-                                        <label><sup class="obligatorio">*</sup>Desarrollador</label>
-                                        <select id="inputState" class="form-control" name="d">
-                                            <option selected>Elige</option>
-                                            @foreach ($Desa as $desa)
-                                                <option value="{{$desa->idDesarollador}}">{{$desa->nomb_desa}}</option>
-                                                @endforeach
-                                        </select>
-                                        <strong class="text-danger"></strong>
-                                    </div>
-
-
-
-    
-                                    <div class="form-group col-md-6">
-
-                                        <label><sup class="obligatorio">*</sup>Devops</label>
-                                        <select id="inputState" class="form-control" name="dv">
-                                            <option selected>Elige</option>
-                                            @foreach ($Devo as $devo)
-                                                <option value="{{$devo->idDevops}}">{{$devo->nomb_devo}}</option>
-                                                @endforeach
-                                        </select>
-                                        <strong class="text-danger"></strong>
-
-                                    </div>
-
-
-    
-                                    <div class="form-group col-md-6">
-                                        <label><sup class="obligatorio">*</sup>Layer</label>
-                                        <select id="inputState" class="form-control" name="l">
-                                            <option selected>Elige</option>
-                                            @foreach ($Lay as $lay)
-
-                                                <option value="{{$lay->idLayer}}">{{$lay->layer}}</option>
-                                                @endforeach
-
-                                        </select>
-                                        <strong class="text-danger"></strong>
-
-                                    </div>
-
-
-                                    <div class="form-group col-md-6">
-                                        <label><sup class="obligatorio">*</sup>Proyecto</label>
-                                        <select id="inputState" class="form-control" name="p">
-                                            <option selected>Elige</option>
-                                            @foreach ($Pro as $pro)
-
-                                                <option value="{{$pro->idProyecto}}">{{$pro->nomb_proy}}</option>
-                                                @endforeach
-
-                                        </select>
-                                        <strong class="text-danger"></strong>
-                                    </div>
-
-
-
-                                    <div class="form-group col-md-6">
-                                        <label><sup class="obligatorio">*</sup>Rama</label>
-                                        <select id="inputState" class="form-control" name="r">
-                                            <option selected>Elige</option>
-                                            @foreach ($Rama as $rama)
-                                            <option value="{{$rama->idRama}}">{{$rama->nomb_rama}}</option>
-                                            @endforeach
-                                        </select>
-                                        
-                                        <strong class="text-danger"></strong>
-                                    </div>
-
-
-
-                                    <div class="form-group col-md-6">
-                                        <label><sup class="obligatorio">*</sup>Servidor</label>
-                                        <select id="inputState" class="form-control" name="s">
-                                            <option selected>Elige</option>
-                                            @foreach ($Serv as $serv)
-
-                                                <option value="{{$serv->idServidor}}">{{$serv->numb_serv}}</option>
-                                                @endforeach
-
-                                        </select>
-                                        <strong class="text-danger"></strong>
-                                    </div>
-
                                 </div>
+                            </div>
+                                @endif
                                 
-                                <br>
-                                <br>
-                                <br>
+                            <h4>Proyecto</h4>
+                            <a href="{{url('proyectos/create')}}"><button class="btn btn-warning">Nuevo Proyecto</button></a>
+                            <div class="m-t-25">
+                             
 
-                                
-                                <input type="submit" style="margin-left: 500px; width: 220px;" class="btn btn-enviar" value="Registrar">
-                               
-                            </form>
+
+                                <table id="data-table" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Proyecto</th>
+                                            <th>Capa</th>
+                                            <th>Editar Proyecto</th>
+                                            <th>Eliminar Proyecto</th>
+
+
+                                           
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($pro as $p)
+                                        
+                                        
+                                    
+                                       
+
+
+
+                                        <tr>
+                                            <td>{{$p->idProyecto}}</td>
+                                            
+
+                                            <td>{{$p->nomb_proy}}</td>
+
+                                            <td>{{$p->layer}}</td>
+
+
+                                            <td><a class="btn btn-warning" href="{{url('proyectos/'.$p->idProyecto.'/edit')}}"
+                                                title="Modificar"><i class="anticon anticon-edit"></i></a></td>
+
+                                            <form action="{{route('proyectos.delete', $p->idProyecto)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                            <td><button type="submit" style="background-color:transparent; border-color:transparent"><a class="btn btn-btn btn-warning" style="color:white"
+                                                title="Eliminar"><i class="anticon anticon-delete"></i></button></td>
+                                            </form>
+
+                                           
+
+                                     
+
+                                        </tr>
+                                        @endforeach
+                                       
+                                        
+                                    
+                                    
+
+                                    <tfoot>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Proyecto</th>
+                                            <th>Capa</th>
+                                            <th>Editar Proyecto</th>
+                                            <th>Eliminar Proyecto</th>
+
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                              
+                            </div>
+                            <div class="">
+                                <pre><code class=""></code></pre>
+                            </div>
+                            <div class="">
+                                <pre><code class=""><script type="text/plain">
+   
+</script></code></pre>
+                            </div>
+                            <div class="code-example">
+                                <pre><code class=""><script type="text/plain">$('#data-table').DataTable();</script></code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- Content Wrapper END -->
+
+                <!-- Footer START -->
+                <footer class="footer">
+                    <div class="footer-content">
+                        <p class="m-b-0">Copyright © 2022 Montechelo. All rights reserved.</p>
+                        <span>
+                            <a href="" class="text-gray m-r-15">Term &amp; Conditions</a>
+                            <a href="" class="text-gray">Privacy &amp; Policy</a>
+                        </span>
+                    </div>
+                </footer>
+                <!-- Footer END -->
+
+            </div>
+            <!-- Page Container END -->
+
+            <!-- Search Start-->
+            <div class="modal modal-left fade search" id="search-drawer">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header justify-content-between align-items-center">
+                            <h5 class="modal-title">Search</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <i class="anticon anticon-close"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body scrollable">
+                            <div class="input-affix">
+                                <i class="prefix-icon anticon anticon-search"></i>
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <div class="m-t-30">
+                                <h5 class="m-b-20">Files</h5>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-cyan avatar-icon">
+                                        <i class="anticon anticon-file-excel"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Quater Report.exl</a>
+                                        <p class="m-b-0 text-muted font-size-13">by Finance</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-blue avatar-icon">
+                                        <i class="anticon anticon-file-word"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Documentaion.docx</a>
+                                        <p class="m-b-0 text-muted font-size-13">by Developers</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-purple avatar-icon">
+                                        <i class="anticon anticon-file-text"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Recipe.txt</a>
+                                        <p class="m-b-0 text-muted font-size-13">by The Chef</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-red avatar-icon">
+                                        <i class="anticon anticon-file-pdf"></i>
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Project Requirement.pdf</a>
+                                        <p class="m-b-0 text-muted font-size-13">by Project Manager</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-t-30">
+                                <h5 class="m-b-20">Members</h5>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-image">
+                                        <img src="assets/images/avatars/thumb-1.jpg" alt="">
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Erin Gonzales</a>
+                                        <p class="m-b-0 text-muted font-size-13">UI/UX Designer</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-image">
+                                        <img src="assets/images/avatars/thumb-2.jpg" alt="">
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Darryl Day</a>
+                                        <p class="m-b-0 text-muted font-size-13">Software Engineer</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-image">
+                                        <img src="assets/images/avatars/thumb-3.jpg" alt="">
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Marshall Nichols</a>
+                                        <p class="m-b-0 text-muted font-size-13">Data Analyst</p>
+                                    </div>
+                                </div>
+                            </div>   
+                            <div class="m-t-30">
+                                <h5 class="m-b-20">News</h5> 
+                                <div class="d-flex m-b-30">
+                                    <div class="avatar avatar-image">
+                                        <img src="assets/images/others/img-1.jpg" alt="">
+                                    </div>
+                                    <div class="m-l-15">
+                                        <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">5 Best Handwriting Fonts</a>
+                                        <p class="m-b-0 text-muted font-size-13">
+                                            <i class="anticon anticon-clock-circle"></i>
+                                            <span class="m-l-5">25 Nov 2018</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Search End-->
 
             <!-- Quick View START -->
@@ -412,12 +511,12 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header justify-content-between align-items-center">
-                            <h5 class="modal-title">Theme Config</h5>
+                            <h5 class="modal-title">Configuracion de tema</h5>
                         </div>
                         <div class="modal-body scrollable">
                             <div class="m-b-30">
-                                <h5 class="m-b-0">Header Color</h5>
-                                <p>Config header background color</p>
+                                <h5 class="m-b-0">Color de cabecera</h5>
+                                <p>Configuracion de fondo de la cabecera</p>
                                 <div class="theme-configurator d-flex m-t-10">
                                     <div class="radio">
                                         <input id="header-default" name="header-theme" type="radio" checked value="default">
@@ -443,8 +542,8 @@
                             </div>
                             <hr>
                             <div>
-                                <h5 class="m-b-0">Side Nav Dark</h5>
-                                <p>Change Side Nav to dark</p>
+                                <h5 class="m-b-0">Scrollbar modo oscuro</h5>
+                                <p>Cambiar Scroll bar a modo oscuro</p>
                                 <div class="switch d-inline">
                                     <input type="checkbox" name="side-nav-theme-toogle" id="side-nav-theme-toogle">
                                     <label for="side-nav-theme-toogle"></label>
@@ -452,8 +551,8 @@
                             </div>
                             <hr>
                             <div>
-                                <h5 class="m-b-0">Folded Menu</h5>
-                                <p>Toggle Folded Menu</p>
+                                <h5 class="m-b-0">Menu Desplegable</h5>
+                                <p>Ocultar menu desplegable</p>
                                 <div class="switch d-inline">
                                     <input type="checkbox" name="side-nav-fold-toogle" id="side-nav-fold-toogle">
                                     <label for="side-nav-fold-toogle"></label>
@@ -463,136 +562,21 @@
                     </div>
                 </div>            
             </div>
-            <footer class="footer">
-                <div class="footer-content">
-                    <p class="m-b-0">Copyright © 2022 Montechelo. All rights reserved.</p>
-                    <span>
-                        <a href="" class="text-gray m-r-15">Term &amp; Conditions</a>
-                        <a href="" class="text-gray">Privacy &amp; Policy</a>
-                    </span>
-                </div>
-            </footer>
-        </div>
-        <!-- Search Start-->
-        <div class="modal modal-left fade search" id="search-drawer">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header justify-content-between align-items-center">
-                        <h5 class="modal-title">Search</h5>
-                        <button type="button" class="close" data-dismiss="modal">
-                            <i class="anticon anticon-close"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body scrollable">
-                        <div class="input-affix">
-                            <i class="prefix-icon anticon anticon-search"></i>
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <div class="m-t-30">
-                            <h5 class="m-b-20">Files</h5>
-                            <div class="d-flex m-b-30">
-                                <div class="avatar avatar-cyan avatar-icon">
-                                    <i class="anticon anticon-file-excel"></i>
-                                </div>
-                                <div class="m-l-15">
-                                    <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Quater Report.exl</a>
-                                    <p class="m-b-0 text-muted font-size-13">by Finance</p>
-                                </div>
-                            </div>
-                            <div class="d-flex m-b-30">
-                                <div class="avatar avatar-blue avatar-icon">
-                                    <i class="anticon anticon-file-word"></i>
-                                </div>
-                                <div class="m-l-15">
-                                    <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Documentaion.docx</a>
-                                    <p class="m-b-0 text-muted font-size-13">by Developers</p>
-                                </div>
-                            </div>
-                            <div class="d-flex m-b-30">
-                                <div class="avatar avatar-purple avatar-icon">
-                                    <i class="anticon anticon-file-text"></i>
-                                </div>
-                                <div class="m-l-15">
-                                    <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Recipe.txt</a>
-                                    <p class="m-b-0 text-muted font-size-13">by The Chef</p>
-                                </div>
-                            </div>
-                            <div class="d-flex m-b-30">
-                                <div class="avatar avatar-red avatar-icon">
-                                    <i class="anticon anticon-file-pdf"></i>
-                                </div>
-                                <div class="m-l-15">
-                                    <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Project Requirement.pdf</a>
-                                    <p class="m-b-0 text-muted font-size-13">by Project Manager</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m-t-30">
-                            <h5 class="m-b-20">Members</h5>
-                            <div class="d-flex m-b-30">
-                                <div class="avatar avatar-image">
-                                    <img src="assets/images/avatars/thumb-1.jpg" alt="">
-                                </div>
-                                <div class="m-l-15">
-                                    <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Erin Gonzales</a>
-                                    <p class="m-b-0 text-muted font-size-13">UI/UX Designer</p>
-                                </div>
-                            </div>
-                            <div class="d-flex m-b-30">
-                                <div class="avatar avatar-image">
-                                    <img src="assets/images/avatars/thumb-2.jpg" alt="">
-                                </div>
-                                <div class="m-l-15">
-                                    <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Darryl Day</a>
-                                    <p class="m-b-0 text-muted font-size-13">Software Engineer</p>
-                                </div>
-                            </div>
-                            <div class="d-flex m-b-30">
-                                <div class="avatar avatar-image">
-                                    <img src="assets/images/avatars/thumb-3.jpg" alt="">
-                                </div>
-                                <div class="m-l-15">
-                                    <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">Marshall Nichols</a>
-                                    <p class="m-b-0 text-muted font-size-13">Data Analyst</p>
-                                </div>
-                            </div>
-                        </div>   
-                        <div class="m-t-30">
-                            <h5 class="m-b-20">News</h5> 
-                            <div class="d-flex m-b-30">
-                                <div class="avatar avatar-image">
-                                    <img src="assets/images/others/img-1.jpg" alt="">
-                                </div>
-                                <div class="m-l-15">
-                                    <a href="javascript:void(0);" class="text-dark m-b-0 font-weight-semibold">5 Best Handwriting Fonts</a>
-                                    <p class="m-b-0 text-muted font-size-13">
-                                        <i class="anticon anticon-clock-circle"></i>
-                                        <span class="m-l-5">25 Nov 2018</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Search End-->
-
             <!-- Quick View END -->
         </div>
     </div>
 
     
     <!-- Core Vendors JS -->
-    <script src="{{asset('assets/js/vendors.min.js')}}"></script>
+    <script src="assets/js/vendors.min.js"></script>
 
     <!-- page js -->
-    <script src="{{asset('assets/vendors/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/vendors/datatables/dataTables.bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/datatables.js')}}"></script>
+    <script src="assets/vendors/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/vendors/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/pages/datatables.js"></script>
 
     <!-- Core JS -->
-    <script src="{{asset('assets/js/app.min.js')}}"></script>
+    <script src="assets/js/app.min.js"></script>
 
 </body>
 
