@@ -118,7 +118,7 @@ class DespliegueController extends Controller
        ->get();
 
        $D = DB::table('Despliegue')
-       ->select('IdDesp')
+       ->select('IdDesp','FK_AMB')
        ->get();
        
        $Desa = DB::table('Desarollador')

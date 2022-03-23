@@ -55,6 +55,9 @@ Route::delete('/servidores/{servidore}/delete',[App\Http\Controllers\ServidorCon
 Route::resource('home','App\Http\Controllers\HomeController');
 
 //INFORME 
-Route::get('pdf', 'App\Http\Controllers\PDFController@informe')->name('pdf.informe');
+Route::resource('pdf', 'App\Http\Controllers\PDFController');
+Route::get('apdf', 'App\Http\Controllers\PDFController@informe')->name('pdf.informe');
+
+
 Route::get('excel', 'App\Http\Controllers\ExcelController@DespExport')->name('excel.informe');
 
