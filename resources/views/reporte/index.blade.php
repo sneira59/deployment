@@ -16,8 +16,11 @@
             <br>
             
             
-            <form action="{{route('pdf.informe')}}" method="POST">
+            <form action="{{route('pdf.rango')}}" method="POST">
                 @csrf
+
+
+
                 <div class="form-row">
                     
                     <!-- Input A -->

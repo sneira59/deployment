@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+        $this->middleware('example');
+
+    }
     public function index()
    { 
+    $user = User::all();
+
     $Amb = DB::table('Ambiente')
     ->select(DB::raw("COUNT(*) as count_row"))
     ->get();
@@ -53,7 +63,8 @@ class HomeController extends Controller
         ->with('Pro',$Pro)
         ->with('Rama',$Rama)
         ->with('Serv',$Serv)
-        ->with('Amb',$Amb);
+        ->with('Amb',$Amb)
+        ->with('user', $user);
 }
 
 }

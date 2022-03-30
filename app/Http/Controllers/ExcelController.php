@@ -9,6 +9,12 @@ use App\Exports\DespExport;
 
 class ExcelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
     public function DespExport()
     {       
     

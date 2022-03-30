@@ -11,6 +11,12 @@ use App\Http\Requests\ServidorEditarRequest;
 
 class ServidorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
     public function index(){
         $serv = Servidor::all();
 

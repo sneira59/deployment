@@ -11,6 +11,12 @@ use App\Http\Requests\RamaEditarRequest;
 
 class RamaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
     public function index(){
         $rama = Rama::all();
 

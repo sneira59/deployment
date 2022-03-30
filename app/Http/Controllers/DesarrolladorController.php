@@ -14,6 +14,12 @@ use App\Http\Requests\DesaEditarRequest;
 
 class DesarrolladorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
     public function index(){
         $desa = Desarrollador::all();
         return view('desarrollador.desarrollador')->with('desa',$desa);

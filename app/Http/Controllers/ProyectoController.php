@@ -13,6 +13,12 @@ use App\Http\Requests\ProEditarRequest;
 
 class ProyectoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
     public function index(){
         $pro = Proyecto::all();
 

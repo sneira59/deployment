@@ -12,6 +12,12 @@ use App\Http\Requests\DevoEditarRequest;
 
 class DevopsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
     public function index() {
         
         $devo = Devops::all();

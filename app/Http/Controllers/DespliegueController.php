@@ -21,6 +21,12 @@ use App\Http\Requests\DespEditarRequest;
 
 class DespliegueController extends Controller
 {
+   public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
    public function index()
    {           
 

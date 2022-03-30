@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Crabbly\Fpdf\Fpdf;
 use Illuminate\Support\Facades\DB;
-use App\Despliegue;
+use App\Models\Despliegue;
 use App\Models\Fechas;
 use App\Http\Requests\FechStoreRequest;
 
@@ -13,6 +13,12 @@ use App\Http\Requests\FechStoreRequest;
 
 class PDFController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
     public function index(){
 
         $Desa = DB::table('Despliegue')
@@ -41,12 +47,49 @@ class PDFController extends Controller
 
         return view('reporte.index')->with('Desa',$Desa);
      }
+     
+     public function rango(FechStoreRequest $request){
+
+        // dd($request);
+         
+        $Desa = DB::table('Despliegue')
+        ->select(
+           'Ambiente.nomb_amb',
+           'Desarollador.nomb_desa',
+           'Devops.nomb_devo',
+           'Layer.layer',
+           'Proyecto.nomb_proy',
+           'Rama.nomb_rama',
+           'Servidor.numb_serv',
+           'Despliegue.fecha',
+           'Despliegue.IdDesp'
+        )
+        ->join('Ambiente','Despliegue.FK_AMB','=','Ambiente.idAmbiente')
+        ->join('Desarollador','Despliegue.FK_DESA','=','Desarollador.idDesarollador')
+        ->join('Devops','Despliegue.FK_DEVO','=','Devops.idDevops')
+        ->join('Layer','Despliegue.FK_LAYE','=','Layer.idLayer')
+        ->join('Proyecto','Despliegue.FK_PRO','=','Proyecto.idProyecto')
+        ->join('Rama','Despliegue.FK_RAMA','=','Rama.idRama')
+        ->join('Servidor','Despliegue.FK_SERV','=','Servidor.idServidor')
+        ->distinct()
+        ->get();
+
+         $fi = $request-> di. ' ';
+         $ff = $request-> df. '';
+
+         $rango = Despliegue::whereBetween('fecha',[$fi,$ff])
+         ->get();
+
+
+         return view('reporte.index', compact('rango'))->with('Desa',$Desa);
+
+     }
 
 
 
 
 
-    public function informe(FechStoreRequest $request){
+    public function informe(){
        
         
 

@@ -12,6 +12,13 @@ use App\Http\Requests\AmbEditarRequest;
 
 class AmbienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('example');
+
+    }
+
     public function index(){
 
         $amb = Ambiente::all();
